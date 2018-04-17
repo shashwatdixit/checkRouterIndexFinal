@@ -1,0 +1,8 @@
+ip ip-prefix RNC-MGMT-EXPORT index 1551 permit 172.24.145.120 29 greater-equal 29 less-equal 32
+ip ip-prefix RNC-MGMT-EXPORT index 1552 permit 172.24.147.8 29 greater-equal 29 less-equal 32
+ip ip-prefix RNC-MGMT-EXPORT index 1553 permit 172.24.144.48 29 greater-equal 29 less-equal 32
+ip ip-prefix RNC-MGMT-EXPORT index 1700 permit 172.24.151.72 29 greater-equal 29 less-equal 32
+ip ip-prefix RNC-MGMT-EXPORT index 1555 permit 172.24.154.24 29 greater-equal 29 less-equal 32
+ip ip-prefix RNC-MGMT-EXPORT index 1556 permit 172.24.73.184 29 greater-equal 29 less-equal 32
+ip ip-prefix RNC-MGMT-EXPORT index 1557 permit 172.24.77.24 29 greater-equal 29 less-equal 32
+ip ip-prefix RNC-MGMT-EXPORT index 1558 permit 172.24.151.56 29 greater-equal 29 less-equal 32
