@@ -100,74 +100,74 @@
     <build>
         <finalName>checkRouterIndexEdit</finalName>
         <plugins>
-             <!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;Set a compiler level, Use this to edit in intellij&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
-            <!--<plugin>-->
-                <!--<groupId>org.apache.maven.plugins</groupId>-->
-                <!--<artifactId>maven-compiler-plugin</artifactId>-->
-                <!--<version>2.3.2</version>-->
-                <!--<configuration>-->
-                    <!--<source>1.8</source>-->
-                    <!--<target>1.8</target>-->
-                <!--</configuration>-->
-            <!--</plugin>-->
-
-            <!--&lt;!&ndash; Maven Shade Plugin &ndash;&gt;-->
-
-            <!--<plugin>-->
-            <!--<groupId>org.apache.maven.plugins</groupId>-->
-            <!--<artifactId>maven-shade-plugin</artifactId>-->
-            <!--<version>2.3</version>-->
-            <!--<executions>-->
-                <!--&lt;!&ndash; Run shade goal on package phase &ndash;&gt;-->
-                <!--<execution>-->
-                    <!--<phase>package</phase>-->
-                    <!--<goals>-->
-                        <!--<goal>shade</goal>-->
-                    <!--</goals>-->
-                    <!--<configuration>-->
-                        <!--<transformers>-->
-                            <!--&lt;!&ndash; add Main-Class to manifest file &ndash;&gt;-->
-                            <!--<transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">-->
-                                <!--<mainClass>MainClass</mainClass>-->
-                            <!--</transformer>-->
-                        <!--</transformers>-->
-                    <!--</configuration>-->
-                <!--</execution>-->
-            <!--</executions>-->
-        <!--</plugin>-->
-
-            <!--&lt;!&ndash;&lt;!&ndash;Use this to Build&ndash;&gt;&ndash;&gt;-->
+             <!--&lt;!&ndash;&lt;!&ndash;Set a compiler level, Use this to edit in intellij&ndash;&gt;&ndash;&gt;-->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-dependency-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <id>copy-dependencies</id>
-                        <phase>prepare-package</phase>
-                        <goals>
-                            <goal>copy-dependencies</goal>
-                        </goals>
-                        <configuration>
-                            <outputDirectory>
-                                ${project.build.directory}/libs
-                            </outputDirectory>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-jar-plugin</artifactId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>2.3.2</version>
                 <configuration>
-                    <archive>
-                        <manifest>
-                            <addClasspath>true</addClasspath>
-                            <classpathPrefix>libs/</classpathPrefix>
-                            <mainClass>MainClass</mainClass>
-                        </manifest>
-                    </archive>
+                    <source>1.8</source>
+                    <target>1.8</target>
                 </configuration>
             </plugin>
+
+            <!-- Maven Shade Plugin -->
+
+            <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-shade-plugin</artifactId>
+            <version>2.3</version>
+            <executions>
+                <!-- Run shade goal on package phase -->
+                <execution>
+                    <phase>package</phase>
+                    <goals>
+                        <goal>shade</goal>
+                    </goals>
+                    <configuration>
+                        <transformers>
+                            <!-- add Main-Class to manifest file -->
+                            <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                                <mainClass>MainClass</mainClass>
+                            </transformer>
+                        </transformers>
+                    </configuration>
+                </execution>
+            </executions>
+        </plugin>
+
+            <!--&lt;!&ndash;&lt;!&ndash;Use this to Build&ndash;&gt;&ndash;&gt;-->
+            <!--<plugin>-->
+                <!--<groupId>org.apache.maven.plugins</groupId>-->
+                <!--<artifactId>maven-dependency-plugin</artifactId>-->
+                <!--<executions>-->
+                    <!--<execution>-->
+                        <!--<id>copy-dependencies</id>-->
+                        <!--<phase>prepare-package</phase>-->
+                        <!--<goals>-->
+                            <!--<goal>copy-dependencies</goal>-->
+                        <!--</goals>-->
+                        <!--<configuration>-->
+                            <!--<outputDirectory>-->
+                                <!--${project.build.directory}/libs-->
+                            <!--</outputDirectory>-->
+                        <!--</configuration>-->
+                    <!--</execution>-->
+                <!--</executions>-->
+            <!--</plugin>-->
+            <!--<plugin>-->
+                <!--<groupId>org.apache.maven.plugins</groupId>-->
+                <!--<artifactId>maven-jar-plugin</artifactId>-->
+                <!--<configuration>-->
+                    <!--<archive>-->
+                        <!--<manifest>-->
+                            <!--<addClasspath>true</addClasspath>-->
+                            <!--<classpathPrefix>libs/</classpathPrefix>-->
+                            <!--<mainClass>MainClass</mainClass>-->
+                        <!--</manifest>-->
+                    <!--</archive>-->
+                <!--</configuration>-->
+            <!--</plugin>-->
             <!--Not Useful as dependency jars unsigned-->
             <!--<plugin>-->
                 <!--<groupId>org.apache.maven.plugins</groupId>-->
