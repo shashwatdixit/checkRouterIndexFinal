@@ -2,6 +2,7 @@
 import ch.ethz.ssh2.Connection;
 import ch.ethz.ssh2.Session;
 import ch.ethz.ssh2.StreamGobbler;
+import com.opencsv.CSVWriter;
 import controller.ReadCsvPath;
 import controller.WriteDeviceOutputToFile;
 
@@ -25,16 +26,14 @@ import service.ParseIndexNumber;
 import service.ParseQosImpl;
 
 import java.io.*;
+import java.lang.reflect.Array;
 import java.nio.charset.Charset;
 
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-import java.util.EnumSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Scanner;
+import java.util.*;
 import java.util.concurrent.TimeUnit;
 
 
@@ -55,12 +54,25 @@ public class MainClass {
 
             ParseQosImpl parseQos = new ParseQosImpl();
 
+            List<String[]> deviceDataListOfArray = new ArrayList<>();
             try{
                 List<List<String>> deviceData=parseQos.parseServiceDetails(dirDumpPath,dirDumpPath.concat("/xml/configQos.xml"));
                 System.out.println(deviceData.toString());
+                CSVWriter csvWriter =new CSVWriter(new FileWriter(dirDumpPath.concat("/result.csv")));
+                for(List<String> ss:deviceData){
+                    String[] record=new String[ss.size()];
+                    for(int i=0;i<ss.size();i++){
+                        record[i]=ss.get(i);
+                    }
+                    deviceDataListOfArray.add(record);
+                }
+                csvWriter.writeAll(deviceDataListOfArray);
+                csvWriter.close();
             }catch (javax.xml.bind.JAXBException e){
                 e.printStackTrace();
             }
+
+
 
         }
 

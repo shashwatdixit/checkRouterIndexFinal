@@ -44,6 +44,8 @@ public class ParseQosImpl implements ParseQos {
                     e.printStackTrace();
                 }
 
+
+
                 for (int i=0;i<observedValues.size();i++){
                     System.out.println(observedValues.get(i).get("description"));
                     System.out.println(observedValues.get(i).get("bandwidth"));
